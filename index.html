@@ -30,6 +30,9 @@
     <img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png">101- 200
     <img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png">200+
   </div>
+  <div>
+   A * indicates goverment school
+  </div>
   <div id="map"></div>
   <script>
     // var map;
@@ -49,6 +52,9 @@
         document.getElementById("map"), {
           zoom: 11,
           center: melbourne,
+            options: {
+      gestureHandling: 'greedy'
+    }
         }
       );
       // const addressArray = ['253 Tucker Road, Ormond, VIC 3204','46 Lincoln Drive Cheltenham 3192'];
@@ -75,18 +81,16 @@
         url += color + "-dot.png";
 
 
-        var tooltiponclcik = 'Company Name :  1  , <br> ' + 'Sales Off Name :  2  , <br>' + 'Warehouse Name :  3 ';
-
+        var isNotGoverment = schoolItem.Sector.includes('Non');
         var marker = new google.maps.Marker({
           map: map,
           position: myLatLng,
           label: {
-            text: schoolItem.Rank,
+            text: schoolItem.Rank + (isNotGoverment ? '' : '*'),
             color: "black",
             fontWeight: 'bold'
           },
           title: schoolItem.School,
-          //title: tooltiponclcik,
           icon: {
             url: url
           }
