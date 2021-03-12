@@ -25,13 +25,13 @@
 <body>
   <div id="legend">
     Victoria Top Primary School
-    <img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png">Top 50 
-    <img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png">51 - 100
-    <img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png">101- 200
-    <img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png">200+
+    <img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png">Top 21(100 Marks) 
+    <img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png">22-63(99 Marks)
+    <img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png">66 - 110 (98 Marks)
+    <img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png">110 + (97 Marks and below)
   </div>
   <div>
-   A * indicates goverment school
+   A * indicates government school
   </div>
   <div id="map"></div>
   <script>
@@ -67,15 +67,15 @@
         //console.log("School Item " + schoolItem["X"]);
         let myLatLng = new google.maps.LatLng(schoolItem["Y"], schoolItem["X"]);
 
-        let color = "green" //0-50
+        let color = "green" //0-21 
         var parsedRank = parseInt(schoolItem.Rank)
         //console.log("ParsedRank " + parsedRank);
-        if (parsedRank > 50 && parsedRank <= 100) {
-          color = "yellow" //50-100
-        } else if (parsedRank > 100 && parsedRank < 200) {
-          color = "blue" //100-200
-        } else if (parsedRank >= 200) {
-          color = "red" //200-300
+        if (parsedRank > 21 && parsedRank <= 63) {
+          color = "yellow" //22-63
+        } else if (parsedRank > 63 && parsedRank <= 110) {
+          color = "blue" //64-110
+        } else if (parsedRank > 110) {
+          color = "red" //110-300
         }
         var url = "http://maps.google.com/mapfiles/ms/icons/";
         url += color + "-dot.png";
